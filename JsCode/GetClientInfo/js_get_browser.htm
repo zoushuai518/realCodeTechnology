@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS获取客户端硬件信息和浏览器信息</title>
+</head>
+<body>
+
+
+
+
+<script>
+
+//JS获取客户端硬件信息一般都没有权限，访问者不可能为了让你获取到他的计算机硬件信息而对他的IE特意进行设置，所以用JS获取客户端的方法行不通。
+
+
+//document.documentElement.clientHeight -->浏览器的高度
+//document.documentElement.scrollHeight 全文的高度
+//document.documentElement.scrollTop滚去的高度
+function getInfo()
+{
+    var s = "";
+    s += " 网页可见区域宽："+ document.body.clientWidth;
+    s += " 网页可见区域高："+ document.body.clientHeight;
+    s += " 网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)";
+    s += " 网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)";
+    s += " 网页正文全文宽："+ document.body.scrollWidth;
+    s += " 网页正文全文高："+ document.body.scrollHeight;
+    s += " 网页被卷去的高(ff)："+ document.body.scrollTop;
+    s += " 网页被卷去的高(ie)："+ document.documentElement.scrollTop;
+    s += " 网页被卷去的左："+ document.body.scrollLeft;
+    s += " 网页正文部分上："+ window.screenTop;
+    s += " 网页正文部分左："+ window.screenLeft;
+    s += " 屏幕分辨率的高："+ window.screen.height;
+    s += " 屏幕分辨率的宽："+ window.screen.width;
+    s += " 屏幕可用工作区高度："+ window.screen.availHeight;
+    s += " 屏幕可用工作区宽度："+ window.screen.availWidth;
+    s += " 你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色";
+    s += " 你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸";
+    //alert (s);
+test1.innerHTML=s;
+}
+//getInfo();
+
+p = window.navigator.userAgent;//OS
+document.write("<br>OS=");
+document.write(p);
+
+v = navigator.appName;//浏览器
+document.write("<br>浏览器:");
+document.write(v);
+if(v != "Netscape")//颜色深度
+{
+c = screen.colorDepth;
+} else {
+c = screen.pixelDepth;
+}
+document.write("<br>");
+document.write("颜色深度:"+c);
+document.write("<br>");
+
+s = screen.width+"x"+screen.height;//分辨率
+document.write("<br>分辨率=");
+document.write(s);
+document.write("<br>");
+
+t = escape(document.title);//被访问页面标题
+document.write("<br>被访问页面标题=");
+document.write(t);
+document.write("<br>");
+
+l = window.location;//被访问页面地址
+document.write("<br>被访问页面地址=");
+document.write(l);
+document.write("<br>");
+
+var f = "";//来源页面
+
+// if pp_frames is true then try getting the framed referral (without error checking)
+if (typeof(pp_frames) != "undefined")
+if (pp_frames)
+f = top.document.referrer;
+
+// get the referral for non-multi-domained-framed sites using a Netscape browser
+if ((f == "") || (f == "[unknown origin]") || (f == "unknown") || (f == "undefined"))
+if (document["parent"] != null)
+if (parent["document"] != null) // ACCESS ERROR HERE!
+if (parent.document["referrer"] != null)
+if (typeof(parent.document) == "object")
+f = parent.document.referrer;
+
+// get the referral for the current document if a framed referral wasn't found
+if ((f == "") || (f == "[unknown origin]") || (f == "unknown") || (f == "undefined"))
+if (document["referrer"] != null)
+f = document.referrer;
+
+// convert all the unknown's into blank
+if ((f == "") || (f == "[unknown origin]") || (f == "unknown") || (f == "undefined"))
+f = "";
+
+// escape the referral
+f = escape(f);
+document.write("<br>来源页面=");
+document.write(f);
+document.write("<br>");
+
+
+//判断Alexa工具条 1安装 0未安装
+function doTryAlexa()
+{
+try
+{
+aborted();
+return 1;
+}
+catch(e)
+{
+return 0;
+}
+}
+a = doTryAlexa();
+document.write("<br>Alexa工具条=");
+document.write(a);
+</script>
+<script language="JavaScript"><!--
+document.write("<br>浏览器名称: "+navigator.appName+"<br>");
+document.write("<br>版本号: "+navigator.appVersion+"<br>");
+document.write("<br>代码名字: "+navigator.appCodeName+"<br>");
+document.write("<br>用户代理标识: "+navigator.userAgent);
+// -->
+</script>
+
+	
+</body>
+</html>

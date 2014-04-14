@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取 操作系统 & 浏览器版本</title>
+</head>
+<body>
+
+
+	<script>
+	/*
+		JS 获取浏览器类型、版本及操作系统
+
+	Copy this script into your JavaScript files. It works immediately, and you can query three properties of the BrowserDetectobject:
+
+    Browser name: BrowserDetect.browser
+
+    Browser version: BrowserDetect.version
+
+    OS name: BrowserDetect.OS
+
+
+	EXT info:
+	[zs:
+	Javascript中的Navigator对象包含有关浏览器的信息，其中的userAgent中返回由客户机发送服务器的 user-agent 头部的值
+	]
+
+	zs 亲自测试 可用 BrowserDetect；
+
+    */
+
+var BrowserDetect = {
+init: function () {
+		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+		this.version = this.searchVersion(navigator.userAgent)
+			|| this.searchVersion(navigator.appVersion)
+			|| "an unknown version";
+		this.OS = this.searchString(this.dataOS) || "an unknown OS";
+
+		// zs debug
+		// alert(navigator.userAgent);
+		// alert(navigator.platform);
+		// -----
+		// alert(this.browser);
+		// alert(this.version);
+		// alert(typeof(this.OS));
+		if(this.OS==='Linux'){
+			window.location.href="http://m.b5m.com";
+		} 
+	},
+	searchString: function (data) {
+		for (var i=0;i<data.length;i++)	{
+			var dataString = data[i].string;
+			var dataProp = data[i].prop;
+			this.versionSearchString = data[i].versionSearch || data[i].identity;
+			if (dataString) {
+				if (dataString.indexOf(data[i].subString) != -1)
+					return data[i].identity;
+			}
+			else if (dataProp)
+				return data[i].identity;
+		}
+	},
+	searchVersion: function (dataString) {
+		var index = dataString.indexOf(this.versionSearchString);
+		if (index == -1) return;
+		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+	},
+	dataBrowser: [
+		{
+			string: navigator.userAgent,
+			subString: "Chrome",
+			identity: "Chrome"
+		},
+		{ 	string: navigator.userAgent,
+			subString: "OmniWeb",
+			versionSearch: "OmniWeb/",
+			identity: "OmniWeb"
+		},
+		{
+			string: navigator.vendor,
+			subString: "Apple",
+			identity: "Safari",
+			versionSearch: "Version"
+		},
+		{
+			prop: window.opera,
+			identity: "Opera",
+			versionSearch: "Version"
+		},
+		{
+			string: navigator.vendor,
+			subString: "iCab",
+			identity: "iCab"
+		},
+		{
+			string: navigator.vendor,
+			subString: "KDE",
+			identity: "Konqueror"
+		},
+		{
+			string: navigator.userAgent,
+			subString: "Firefox",
+			identity: "Firefox"
+		},
+		{
+			string: navigator.vendor,
+			subString: "Camino",
+			identity: "Camino"
+		},
+		{		// for newer Netscapes (6+)
+			string: navigator.userAgent,
+			subString: "Netscape",
+			identity: "Netscape"
+		},
+		{
+			string: navigator.userAgent,
+			subString: "MSIE",
+			identity: "Explorer",
+			versionSearch: "MSIE"
+		},
+		{
+			string: navigator.userAgent,
+			subString: "Gecko",
+			identity: "Mozilla",
+			versionSearch: "rv"
+		},
+		{ 		// for older Netscapes (4-)
+			string: navigator.userAgent,
+			subString: "Mozilla",
+			identity: "Netscape",
+			versionSearch: "Mozilla"
+		}
+	],
+	dataOS : [
+		{
+			string: navigator.platform,
+			subString: "Win",
+			identity: "Windows"
+		},
+		{
+			string: navigator.platform,
+			subString: "Mac",
+			identity: "Mac"
+		},
+		{
+			   string: navigator.userAgent,
+			   subString: "iPhone",
+			   identity: "iPhone/iPod"
+	    },
+		{
+			string: navigator.platform,
+			subString: "Linux",
+			identity: "Linux"
+		},
+		{
+			string: navigator.platform,
+			subString: "iPhone",
+			identity: "iPhone"
+		},
+		{
+			string: navigator.platform,
+			subString: "android",
+			identity: "android"
+		}
+
+
+	]
+
+};
+
+
+
+BrowserDetect.init();
+
+
+/*
+	// zs  test
+	var ua = navigator.userAgent;
+	//alert(ua);
+	if(ua.indexOf('Linux') !== -1){
+		alert('This is Linux OS');
+	}else{
+		alert('This is Linux Windows');
+	}
+
+*/
+	</script>
+
+	
+</body>
+</html>
