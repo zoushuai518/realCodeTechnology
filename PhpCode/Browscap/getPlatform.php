@@ -1,6 +1,13 @@
 <?php
 //zs test enable
-//zs后期 使用 需要改进
+
+/**
+	This is simple
+*/
+
+//zs-ext 使用 需要改进
+
+
 /**
  * 获取浏览器平台。
  *
