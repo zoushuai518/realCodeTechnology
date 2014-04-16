@@ -1,0 +1,16 @@
+首页大概3KB，是在本地测试的
+
+. 代码如下:
+file_get_contents('shadow.xml');
+耗时 0.0003 秒
+
+. 代码如下:
+$indexFile = fopen('shadow.xml', 'r');while ( !feof($indexFile)) fgetc( $indexFile);
+耗时 0.026 秒
+
+. 代码如下:
+$indexFile = fopen('shadow.xml', 'r');fread($indexFile, 10000);
+耗时 0.0003秒
+相差将近 100 倍！！ 还真是出乎意料
+
+我估摸着时间怕都牺牲在while循环上还是怎的
