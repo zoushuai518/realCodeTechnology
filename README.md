@@ -2,6 +2,6 @@ realCodeTechnology
 ==================
 
 {
-	PhpCode:php代码
-	JsCode:php代码
+	PhpCode:Php代码
+	JsCode:JavaScript代码
 }
