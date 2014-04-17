@@ -7,7 +7,7 @@
  *@return bollr
  */
 
-function getmaxdim($vDim)
+function getMaxDim($vDim)
 
 {
 
