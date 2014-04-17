@@ -1,0 +1,136 @@
+FirePHP使用详解:{http://www.firephp.org/HQ/Use.htm}
+{
+	1、面向对象API(Object Oriented API)
+	require_once('FirePHPCore/FirePHP.class.php');
+	$firephp = FirePHP::getInstance(true);
+	$firephp-> *
+
+	require_once('FirePHPCore/fb.php');
+	FB:: *
+
+	$firephp->setEnabled(false);  // or FB::
+
+	FB::send(/* See fb() */);
+
+
+	2、面向过程API
+	require_once('FirePHPCore/fb.php');
+
+	fb($var);
+	fb($var, 'Label');
+	fb($var, FirePHP::*);
+	fb($var, 'Label', FirePHP::*);
+	3、参数说明
+	// Defaults:
+	$options = array('maxObjectDepth' => 5,
+	                 'maxArrayDepth' => 5,
+	                 'maxDepth' => 10,
+	                 'useNativeJsonEncode' => true,
+	                 'includeLineNumbers' => true);
+
+	$firephp->getOptions();
+	$firephp->setOptions($options);
+	FB::setOptions($options);
+
+	$firephp->setObjectFilter('ClassName',
+	                           array('MemberName'));
+
+
+	4、错误、异常及断点处理
+	$firephp->registerErrorHandler(
+	            $throwErrorExceptions=false);
+	$firephp->registerExceptionHandler();
+	$firephp->registerAssertionHandler(
+	            $convertAssertionErrorsToExceptions=true,
+	            $throwAssertionExceptions=false);
+
+	try {
+	  throw new Exception('Test Exception');
+	} catch(Exception $e) {
+	  $firephp->error($e);  // or FB::
+	}
+
+
+	5、分组
+	$firephp->group('Test Group');
+	$firephp->log('Hello World');
+	$firephp->groupEnd();
+
+	$firephp->group('Collapsed and Colored Group',
+	                array('Collapsed' => true,
+	                      'Color' => '#FF00FF'));
+
+
+	6、记录信息
+	$firephp->log('Plain Message');     // or FB::
+	$firephp->info('Info Message');     // or FB::
+	$firephp->warn('Warn Message');     // or FB::
+	$firephp->error('Error Message');   // or FB::
+
+	$firephp->log('Message','Optional Label');
+
+	$firephp->fb('Message', FirePHP::*);
+
+
+	7、分表
+	$table   = array();
+	$table[] = array('Col 1 Heading','Col 2 Heading');
+	$table[] = array('Row 1 Col 1','Row 1 Col 2');
+	$table[] = array('Row 2 Col 1','Row 2 Col 2');
+	$table[] = array('Row 3 Col 1','Row 3 Col 2');
+
+	$firephp->table('Table Label', $table);  // or FB::
+
+	fb($table, 'Table Label', FirePHP::TABLE);
+
+
+	8、跟踪
+	$firephp->trace('Trace Label');  // or FB::
+
+	fb('Trace Label', FirePHP::TRACE);
+}
+
+FirePHP的使用:{http://blog.chinaunix.net/uid-20509084-id-1939409.html}
+{
+	一.firePHP是什么
+	firePHP是一款ff的插件，用于将php调试信息输出到firebug控制台。
+	二.firePHP有什么用
+	在正式发布后，又不影响页面显示的情况下，调试php，将调试信息输出到控制台
+	三.firePHP安装
+	1。前提：必须是在ff(如果ff都没有的话，可以不用往下面看了)
+	              需要安装ff的插件---firebug
+	              打开输出缓存（将php.ini设置output_buffer=true）或者ob_start();
+	              
+	2。安装：
+	a.下载FirePHPcore libariry 或使用PEAR(没有实验过用PEAR）
+	b.将包放到项目目录下（假设firePHPCore放到项目根目录下）
+	c.服务端使用方式。
+	require_once('firePHPCore/fb.php);//引入包
+	d、开启客户端
+	开启Firebug 控制台、脚本、网络。
+	将当前网站添加入FirePHP允许站点
+	3.使用
+	      //默认设置输出方式log 等同于 fb('Log message'  ,FirePHP::LOG);
+	      FB::LOG("LOG MESSAGE",'LOG');
+	      //默认设置输出方式log 等同于 fb('INFO MESSAGE' ,FirePHP::INFO);
+	      FB::info("INFO MESSAGE","INFO");
+	       //默认设置输出方式log 等同于 fb('ERROR MESSAGE‘,'ERROR',FirePHP:ERROR);
+	       FB::error("ERROR MESSAGE","ERROR");
+	       //默认设置输出方式log 等同于 fb("WARN MESSAGE","WARN",FirePHP::WARN);
+	       FB::warn("WARN MESSAGE","WARN");
+	按组输出
+	       FB::group("TEST1 GROUP");
+	       FB::groupEnd();
+	按表格输出
+	第一行默认为表头
+	$arr = array();
+	$arr[] = array('header1','header2');//表头
+	$arr[] = array('content1','content2');
+	fb($arr,'table',FirePHP::TABLE);
+	输出当前trace信息（当前文件，行，类，方法）
+	fb('Trace Label', FirePHP::TRACE);
+	输出数组
+	$arr = array('key1'=>'value1','key2'=>array('key21'=>'value21'));
+	fb($arr,'array');
+	还有点需要注意，为了数据的安全，在修改完bug正式发布的时候，需要FB::setEnabled(false); 调试信息将不再输出到控制台
+}
