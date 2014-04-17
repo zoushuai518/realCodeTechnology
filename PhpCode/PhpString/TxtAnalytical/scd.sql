@@ -1,0 +1,25 @@
+CREATE TABLE `scd` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `DOCID` varchar(256) DEFAULT NULL,
+  `Url` varchar(256) DEFAULT NULL,
+  `Brand05` varchar(256) DEFAULT NULL,
+  `Taste07` varchar(256) DEFAULT NULL,
+  `Service09` varchar(256) DEFAULT NULL,
+  `Brand18` varchar(256) DEFAULT NULL,
+  `Env08` varchar(256) DEFAULT NULL,
+  `Brand04` varchar(256) DEFAULT NULL,
+  `BusinessTime13` varchar(256) DEFAULT NULL,
+  `Label14` varchar(256) DEFAULT NULL,
+  `Area03` varchar(256) DEFAULT NULL,
+  `Menu15` varchar(256) DEFAULT NULL,
+  `Price06` varchar(256) DEFAULT NULL,
+  `Shangquan19` varchar(256) DEFAULT NULL,
+  `Score10` varchar(256) DEFAULT NULL,
+  `MenuImgs16` varchar(256) DEFAULT NULL,
+  `ShopName01` varchar(256) DEFAULT NULL,
+  `Telephone12` varchar(256) DEFAULT NULL,
+  `Address11` varchar(256) DEFAULT NULL,
+  `City02` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
