@@ -60,9 +60,25 @@ $data->read('bddata.xls');
 */
 
 error_reporting(E_ALL ^ E_NOTICE);
-//echo '<pre>';
-//print_r($data);die;
 
+for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
+	for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
+		//echo "\"".$data->sheets[0]['cells'][$i][$j]."\"";
+		if ($i !== 1 && $j!==1) {
+			$arr[$i - 2][] = "\"".$data->sheets[0]['cells'][$i][$j]."\",";
+		}
+	}
+	//echo '<pre>';
+	//print_r($arr);die;
+}
+//$arrs[] = $arr;
+
+echo '<pre>';
+//print_r($arrs);die;
+print_r($arr);die;
+
+
+/*
 for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
 	for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
 		echo "\"".$data->sheets[0]['cells'][$i][$j]."\",";
@@ -70,7 +86,7 @@ for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
 	echo "\n";
 
 }
-
+ */
 
 //print_r($data);
 //print_r($data->formatRecords);
