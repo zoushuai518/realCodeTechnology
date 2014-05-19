@@ -1,12 +1,12 @@
 <?php
 
 	/**
-		截取自字符串长度 UTF8
-		$string 要截取的字符串
-		$length 截取的长度
-		$etc 追加的扩展字符
-	*/
-
+	 *截取自字符串长度 UTF8
+	 *$string 要截取的字符串
+	 *$length 截取的长度
+	 *$etc 追加的扩展字符
+	 */
+	// zs useing
 	function truncate_utf8_string($string, $length, $etc = '...') {
 		$result = '';
 		$string = html_entity_decode(trim(strip_tags($string)), ENT_QUOTES, 'UTF-8');
