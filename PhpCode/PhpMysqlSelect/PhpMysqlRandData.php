@@ -57,6 +57,38 @@ class PhpMysqlRandData{
 		return $rand_data;
 	}
 
+
+	/*
+	// useing php mt_rand function, and mysql max_id
+	public static function getRandKeywordsData($num = 30)
+   	{
+        $data = null;
+        $time_ss = strtotime(date('Y-m-d',strtotime('-2 day')))+60*60*9+1800;
+        // 为每个聚合页面生成独立的缓存，缓存24小时
+        $list_id  = Yii::app()->request->getParam('id', null );
+        $key = 'seo_topic_keywods_create_time_v1.1'.$list_id;
+        if(Yii::app()->cache->get($key))
+            return Yii::app()->cache->get($key);
+
+        $sql_max_id = "SELECT max(id) max_id FROM cms_seotopic_keywords";
+        $max_id_arr = Yii::app()->db->createCommand($sql_max_id)->queryRow();
+        $max_id = isset($max_id_arr['max_id']) ? $max_id_arr['max_id'] : 100000;
+        $tiaojian_id = mt_rand(100, $max_id);
+
+        $sql_select ='WHERE status=1 and isexist=1 and create_time<' . $time_ss . ' and id < ' . $tiaojian_id;
+        $limit = "limit $num";
+        $order = "order by id DESC";
+        $sql = "SELECT * FROM cms_seotopic_keywords $sql_select $order $limit";
+
+        $keywords_rand_data = Yii::app()->db->createCommand($sql)->queryAll();
+
+        !empty($keywords_rand_data) && Yii::app()->cache->set($key,$keywords_rand_data, 3600*24*15);
+        return $keywords_rand_data;
+
+        return $data;
+   }
+   */
+
 }
 
 
