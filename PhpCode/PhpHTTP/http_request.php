@@ -9,7 +9,7 @@
  * @Param Param $post_data
  * @Returns Returns
  */
-function http_request($uri, $type,$post_data= '') {
+function http_request($uri, $type,$post_data= '', $cookie=false) {
 	$user_agent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; CIBA)";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $uri);
@@ -39,7 +39,9 @@ function http_request($uri, $type,$post_data= '') {
 			curl_setopt($ch, CURLOPT_HTTPGET, 1);
 			break;
 	}
-
+	if($cookie) {
+		curl_setopt($ch, CURLOPT_COOKIE , $cookie );
+	}
 	//默认ipv4
 	$output = curl_exec($ch);
 	curl_close($ch);
