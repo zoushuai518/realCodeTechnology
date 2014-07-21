@@ -39,6 +39,7 @@ function http_request($uri, $type,$post_data= '', $cookie=false) {
 			curl_setopt($ch, CURLOPT_HTTPGET, 1);
 			break;
 	}
+	//$cookie = 'token='.$uid.'; login=true';
 	if($cookie) {
 		curl_setopt($ch, CURLOPT_COOKIE , $cookie );
 	}
