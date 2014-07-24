@@ -194,8 +194,45 @@ BrowserDetect.init();
 			window.location.href = urlYd;
 		}
 */
+
 	</script>
 
+<script>
+	/*
+	jQuery(document).ready(function(){
+		var isWindows = (navigator.userAgent.indexOf("Windows",0) != -1)?1:0;
+		var isMac = (navigator.userAgent.indexOf("mac",0) != -1)?1:0;
+		var isFirefox = (navigator.userAgent.indexOf("Firefox",0) != -1)?1:0;
+		var isChrome = (navigator.userAgent.toLowerCase().match(/chrome\/([\d.]+)/))?1:0;
+		var isSafari =(navigator.userAgent.indexOf('Safari',0) != -1)?1:0;
+
+
+
+		var url = 'http://t.b5m.com';
+		var download_b5t = $('.download_b5t');
+		if (isWindows) {
+			url = "http://cdn.b5m.cn/upload/plugin/clients/marketing/b5t_latest.exe";
+		}else if(isChrome){
+			download_b5t.attr('href','javascript:;').bind('click',function(){
+				chrome.webstore.install('https://chrome.google.com/webstore/detail/ipbgnefajhcinjdihhidjmobopgpkmob',function(){},function(){
+					download_b5t.unbind('click.chrome');
+					//window.open(url);
+				});
+
+			});
+		}else if(isFirefox){
+			url = "http://cdn.b5m.cn/upload/plugin/clients/marketing/b5t_latest_firefox.xpi";
+		}
+		else if(isSafari){
+			url ='http://cdn.b5m.cn/upload/plugin/clients/plugin/B5T_safari.safariextz';
+		}
+		if(!isChrome || isWindows)
+		{
+			download_b5t.attr("href", url);
+		}
+	});
+	*/
+</script>
 	
 </body>
 </html>
