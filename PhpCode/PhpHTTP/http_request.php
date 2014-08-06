@@ -1,5 +1,7 @@
 <?php
 
+// curl 请求超时 捕获,带完善
+
 //header('Content-type: application/javascript;charset=utf-8');
 /**
  * Function Desc 模拟http请求
@@ -50,3 +52,21 @@ function http_request($uri, $type,$post_data= '', $cookie=false) {
 	curl_close($ch);
 	return $output;
 }
+
+
+
+// http request time out  demo
+function request_test()
+{
+	$url = 'http://www.baidu.com';
+	$type = 'GET';
+	try {
+		$jieguo = http_request($url, $type);
+		var_dump($jieguo);
+		throw new Exception("Some error message");
+	} catch(Exception $e) {
+		echo $e->getMessage();
+	}
+}
+
+request_test();
