@@ -13,6 +13,8 @@ function http_request($uri, $type,$post_data= '', $cookie=false) {
 	$user_agent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; CIBA)";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $uri);
+	// 设置超时时间
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 	//post
 	curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
 	curl_setopt($ch, CURLOPT_HEADER, false);
