@@ -1,4 +1,7 @@
 <?php
+
+// php 生成唯一值
+
 function guid() {
     $charid = strtoupper(md5(uniqid(mt_rand(), true)));
     $uuid =
