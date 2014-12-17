@@ -105,6 +105,8 @@ public function __construct($savePath =  "./file/uploads", $fileFormat='',$maxSi
         }
         //创建目录
         if (!file_exists($this->savePath)) {
+            // 创建多级目录
+            // mkdir($this->savePath, 0777, true);
             mkdir($this->savePath);
         }
         // 检查目录是否可写
