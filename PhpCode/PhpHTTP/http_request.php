@@ -49,6 +49,17 @@ function http_request($uri, $type,$post_data= '', $cookie=false) {
 	}
 	//默认ipv4
 	$output = curl_exec($ch);
+
+	/*
+	if (!curl_errno($curl_handle)) {
+	            curl_close($curl_handle);
+	            $result = json_decode($result,true);
+	            if (is_null($result) || $result === false) {
+	                return false;
+	            }
+	}
+	*/
+
 	curl_close($ch);
 	return $output;
 }
