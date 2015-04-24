@@ -1,16 +1,17 @@
 <?php
 /*=============================================================================
-#     FileName: UpLoadImages.php
+#     FileName: UpLoadFile.php
 #         Desc: 1. 文件上传,from post测试通过; 对于 http post,即提供文件上传服务接口不一定可用,因为$_FILE不一定能接受到图片二进制流; 或者client模拟完全的from upload file
 #               2. 仅供参考,根据不同业务需求,可能还需要完善
 #       Author: shuai.zou
 #        Email: shuai.zou@weimob.com
 #     HomePage: http://www.weimob.com
 #      Version: 0.0.1
-#   LastChange: 2014-12-15 10:03:50
+#   LastChange: 2015-04-24 14:57:11
 #      History:
 =============================================================================*/
 
+//class UpLoadFile{
 class Upload{
     public $saveName;// 保存名
     // $savePath = __DIR__ . "/../runtime/uploads/";// 保存路径
