@@ -1,7 +1,7 @@
 <?php
 /*=============================================================================
 #     FileName: base64UploadImags.php
-#         Desc: base64 位上传图片;简单调试之后可用
+#         Desc: base64 位上传图片;简单调试之后可用; data image base64
 #       Author: shuai.zou
 #        Email: shuai.zou@weimob.com
 #     HomePage: http://www.weimob.com
