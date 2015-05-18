@@ -39,7 +39,7 @@ function getBase64FlowData()
 
     $fileContent = base64_decode($base64Data);
 
-    uploadBuffer($fileContent);
+    uploadBuffer($fileContent, $ext);
 }
 
 function uploadBuffer($content, $ext)
