@@ -28,6 +28,8 @@
         $key=md5($key);
         $key_length=strlen($key);
         $string=$operation=='D'?base64_decode($string):substr(md5($string.$key),0,8).$string;
+        // 加密的字符串可以在url中使用, zs
+        // $string       = $operation == 'D' ? base64_decode(str_replace(['_', '-'], ['+', '/'], $string)) : substr(md5($string.$key), 0, 8).$string;
         $string_length=strlen($string);
         $rndkey=$box=array();
         $result='';
@@ -66,6 +68,8 @@
         else
         {
             return str_replace('=','',base64_encode($result));
+            // 加密的字符串可以在url中使用, zs
+            // return str_replace(['+', '/', '='], ['_', '-', ''], base64_encode($result));
         }
     }
 
