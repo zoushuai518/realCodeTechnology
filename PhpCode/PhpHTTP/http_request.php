@@ -11,7 +11,7 @@
  * @Param Param $post_data
  * @Returns Returns
  */
-function http_request($uri, $type,$post_data= '', $cookie=false) {
+function http_request($uri, $type, $post_data= '', $cookie=false) {
 	$user_agent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; CIBA)";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $uri);
