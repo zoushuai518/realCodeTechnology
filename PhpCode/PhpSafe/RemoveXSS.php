@@ -1,5 +1,6 @@
 <?php
 //zs
+//Discuz系统中
 //from link : http://www.nowamagic.net/librarys/veda/detail/2353
 //过滤XSS攻击
 //即是对用户 输入的数据 进行过滤
